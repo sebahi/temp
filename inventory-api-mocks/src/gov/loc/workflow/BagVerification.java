@@ -1,4 +1,4 @@
-package loc.gov.workflow;
+package gov.loc.workflow;
 
 import javax.ws.rs.FormParam;
 import javax.ws.rs.HeaderParam;

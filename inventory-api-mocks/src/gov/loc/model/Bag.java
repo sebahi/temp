@@ -1,4 +1,4 @@
-package loc.gov.model;
+package gov.loc.model;
 
 import java.io.Serializable;
 

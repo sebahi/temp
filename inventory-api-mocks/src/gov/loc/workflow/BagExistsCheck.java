@@ -1,4 +1,4 @@
-package loc.gov.workflow;
+package gov.loc.workflow;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
@@ -8,7 +8,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
-import loc.gov.model.Bag;
+import gov.loc.model.Bag;
 
 @Path("/bagId")
 public class BagExistsCheck {
