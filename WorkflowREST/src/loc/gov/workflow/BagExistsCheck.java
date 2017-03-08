@@ -20,7 +20,7 @@ public class BagExistsCheck {
         Bag bag = new Bag();
         bag.setBagId("15");
         if(bag.getBagId() != null && !bag.getBagId().isEmpty()) {
-        	if(bag.getBagId().contains(bag.getBagId())){
+        	if(bag.getBagId().contentEquals(bagId)){
         		return Boolean.TRUE.toString();
 	        	}else{
 	        		return Boolean.FALSE.toString();
@@ -38,7 +38,7 @@ public class BagExistsCheck {
         Bag bag = new Bag();
         bag.setBagId("15");
         if(bag.getBagId() != null && !bag.getBagId().isEmpty()) {
-        	if(bag.getBagId().contains(bagId)){
+        	if(bag.getBagId().contentEquals(bagId)){
         		return Boolean.TRUE.toString();
 	        	}else{
 	        		return Boolean.FALSE.toString();
