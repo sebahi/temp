@@ -13,20 +13,18 @@ public class ProcessStatus {
 	private String processInstanceName;
 	private String initiator;
 	private Date startDate;
-	private Date endDate;
 	
 	public ProcessStatus() { }
 	
 	
 	public ProcessStatus(String processInstanceId, String processId, String status, String processInstanceName,
-			String initiator, Date startDate, Date endDate) {
+			String initiator, Date startDate) {
 		this.processInstanceId = processInstanceId;
 		this.processId = processId;
 		this.status = status;
 		this.processInstanceName = processInstanceName;
 		this.initiator = initiator;
 		this.startDate = startDate;
-		this.endDate = endDate;
 	}
 
 
@@ -67,19 +65,11 @@ public class ProcessStatus {
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
-	public Date getEndDate() {
-		return endDate;
-	}
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
-	}
-
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((endDate == null) ? 0 : endDate.hashCode());
 		result = prime * result + ((initiator == null) ? 0 : initiator.hashCode());
 		result = prime * result + ((processId == null) ? 0 : processId.hashCode());
 		result = prime * result + ((processInstanceId == null) ? 0 : processInstanceId.hashCode());
@@ -99,11 +89,6 @@ public class ProcessStatus {
 		if (getClass() != obj.getClass())
 			return false;
 		ProcessStatus other = (ProcessStatus) obj;
-		if (endDate == null) {
-			if (other.endDate != null)
-				return false;
-		} else if (!endDate.equals(other.endDate))
-			return false;
 		if (initiator == null) {
 			if (other.initiator != null)
 				return false;

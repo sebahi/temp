@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
-import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.json.JSONArray;
@@ -45,6 +44,7 @@ public class ProcessStatusController {
 	RestTemplate restTemplate;
 
 	private ArrayList<ProcessStatus> inst;
+	private ArrayList<String> list;
 
 	@RequestMapping(value = "/process/status", method = RequestMethod.GET)
 	public ModelAndView getAllProcessesDefinitions(Model model) {
@@ -59,7 +59,7 @@ public class ProcessStatusController {
 
 			String res = response.getBody();
 			JSONObject json = new JSONObject(res);
-			List<String> list = new ArrayList<String>();
+			list = new ArrayList<String>();
 			JSONArray array = json.getJSONArray("historyLogList");
 			for (int i = 0; i < array.length(); i++) {
 				JSONObject jsn = array.getJSONObject(i);
@@ -99,14 +99,8 @@ public class ProcessStatusController {
 				Date startDate = format.parse(format.format(sDate));
 				processStatus.setStartDate(startDate);
 
-				String end = jsonObject.get("end").toString().trim();
-				Timestamp endStamp = new Timestamp(Long.valueOf(end));
-				Date eDate = new Date(endStamp.getTime());
-				Date endDate = format.parse(format.format(eDate));
-				processStatus.setEndDate(endDate);
-				
 				inst.add(new ProcessStatus(null, null, processStatus.getStatus(), processStatus.getProcessInstanceName(),
-						processStatus.getInitiator(), processStatus.getStartDate(), processStatus.getEndDate()));
+						processStatus.getInitiator(), processStatus.getStartDate()));
 			}
 
 		} catch (Exception ex) {

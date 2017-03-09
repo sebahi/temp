@@ -57,7 +57,6 @@
 									<th>Initiator</th>
 									<th>State</th>
 									<th>Start Date</th>
-									<th>End Date</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -70,7 +69,6 @@
 										<td>${item.initiator }</td>
 										<td>${item.status }</td>
 										<td>${item.startDate }</td>
-										<td>${item.endDate }</td>
 									</tr>
 								</c:forEach>
 							</tbody>
