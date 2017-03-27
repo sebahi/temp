@@ -31,7 +31,6 @@ public class BagExistsCheck {
     }
 	
 	@POST
-    //@Path("/{param}")
 	@Consumes("application/x-www-form-urlencoded")
     public String bagExistCheck(@FormParam("bagId") String bagId,@HeaderParam("Content-Type") String contentType) {
 		System.out.println("Receiving Request with Bag ID = " + bagId + ".");
