@@ -21,7 +21,7 @@
 				<h2>JBPM REPOSITORY</h2>
 				<p>Tasks Management</p>
 				<button type="button" class="btn btn-default btn-sm pull-right"
-					onclick="location.href='/workflow'">
+					onclick="location.href='/workflow-ui'">
 					<span class="glyphicon glyphicon-log-out"></span> Log out
 				</button>
 			</div>
@@ -31,10 +31,10 @@
 	<header class="navbar navbar-light navbar-toggleable-md bd-navbar">
 		<nav class="container">
 			<ul class="nav nav-tabs">
-				<li><a href="/workflow/process/management/">Processes</a></li>
-				<li><a href="/workflow/task/management/">Tasks</a></li>
-				<li><a href="/workflow/process/status/">Process Instance</a></li>
-				<li class="active"><a href="/workflow/task/status/">Task
+				<li><a href="/workflow-ui/process/management/">Processes</a></li>
+				<li><a href="/workflow-ui/task/management/">Tasks</a></li>
+				<li><a href="/workflow-ui/process/status/">Process Instance</a></li>
+				<li class="active"><a href="/workflow-ui/task/status/">Task
 						Management</a></li>
 			</ul>
 		</nav>
@@ -55,7 +55,6 @@
 									<th>Status</th>
 									<th>Priority</th>
 									<th>Created On</th>
-									<th>Due To</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -68,7 +67,6 @@
 										<td data-name="Status">${item.status }</td>
 										<td>${item.priority }</td>
 										<td>${item.createdOn }</td>
-										<%-- <td>${item.dueTo }</td> --%>
 									</tr>
 								</c:forEach>
 							</tbody>

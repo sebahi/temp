@@ -22,11 +22,11 @@
 			<h2>JBPM REPOSITORY</h2>
 			<p>Task Management</p>
 			<button type="button" class="btn btn-default btn-sm pull-right"
-				onclick="location.href='/workflow'">
+				onclick="location.href='/workflow-ui'">
 				<span class="glyphicon glyphicon-log-out"></span> Log out
 			</button>
 			<button type="button" class="btn btn-primary btn-sm pull-right"
-				onclick="location.href='/workflow/process/management/'">
+				onclick="location.href='/workflow-ui/process/management'">
 				<span class="glyphicon glyphicon-home"></span> Home
 			</button>
 		</div>
@@ -42,7 +42,7 @@
 					<input type="checkbox" data-toggle-key-codes="[32]" name="resubmit"
 						path="resubmit"> <input class="btn btn-default pull-right"
 						type="submit" path="resubmit"
-						onclick="form.action='/workflow/task/claim'">This bag
+						onclick="form.action='/workflow-ui/task/claim'">This bag
 					is already exists, do you want to re-submit the bag again?
 				</div>
 			</div>

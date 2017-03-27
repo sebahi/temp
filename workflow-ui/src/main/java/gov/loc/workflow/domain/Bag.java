@@ -2,9 +2,11 @@ package gov.loc.workflow.domain;
 
 import org.springframework.stereotype.Component;
 
+//TODO: Remove the @Component annotation. Rename it, e.g. ReceiveWorkflowForm
 @Component
 public class Bag {
 
+	
 	private String bagId;
 	private boolean doInventory;
 	private boolean doMalwareScan;
@@ -17,7 +19,6 @@ public class Bag {
 	private String numberOfCopies;
 
 	public Bag() {
-		
 	}
 
 	public Bag(String bagId, boolean doInventory, boolean doMalwareScan, boolean doBagInPlace, boolean doVerify,

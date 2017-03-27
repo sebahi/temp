@@ -32,14 +32,19 @@ public class TaskStatusController {
 
 	@Autowired
 	User user;
+	
 	@Autowired
 	TaskStatus taskStatus;
+	
 	@Autowired
 	Task task;
+	
 	@Autowired
 	Env environment;
+	
 	@Autowired
 	ConnectionEstablishement connectionEstablishement;
+	
 	@Autowired
 	RestTemplate restTemplate;
 

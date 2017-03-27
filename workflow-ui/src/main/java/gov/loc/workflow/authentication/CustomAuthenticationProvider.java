@@ -13,24 +13,22 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import gov.loc.workflow.domain.Env;
 import gov.loc.workflow.domain.User;
 import gov.loc.workflow.util.ConnectionEstablishement;
 
-@Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
 	private Logger logger = Logger.getLogger(CustomAuthenticationProvider.class);
 	
 	@Autowired
 	Env environment;
+	
 	@Autowired
-	User user;
-	@Autowired
-	ConnectionEstablishement connectionEstablishement;
+	private User user;
+
 	@Autowired
 	RestTemplate restTemplate;
 	

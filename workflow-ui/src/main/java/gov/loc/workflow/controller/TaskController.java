@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.context.annotation.SessionScope;
 import org.springframework.web.servlet.ModelAndView;
 
 import gov.loc.workflow.domain.Env;
@@ -31,22 +32,29 @@ public class TaskController {
 
 	private Logger logger = Logger.getLogger(TaskController.class);
 	
-	@Autowired
-	Task task;
+	//TODO: remove this.  It should not be instance variable, change it to local method variable.
+	//@Autowired
+	//Task task;
+	
 	@Autowired
 	Env environment;
+	
 	@Autowired
 	User user;
+	
 	@Autowired
 	ConnectionEstablishement connectionEstablishement;
+	
 	@Autowired
 	RestTemplate restTemplate;
+
+	private Task task;
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/task/management", method = RequestMethod.GET)
 	public ModelAndView getAllTasks(Model model) {
 		
-		ModelAndView mav = new ModelAndView("tasks");
+		ModelAndView mav = new ModelAndView("tasksInstances");
 		String url = "http://"+environment.getEnvironment()+"/jbpm-console/rest/task/query?status=Ready";
 		ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, connectionEstablishement.getConnectionRequest(user.getUserName(),user.getPassword()), String.class);
 
@@ -54,7 +62,7 @@ public class TaskController {
 
 		JSONObject json = new JSONObject(body);
 		List<String> list = new ArrayList<String>();
-
+        //TODO: This should be r-ewrite. See ProcessController.java 
 		JSONArray arrayTask = json.getJSONArray("taskSummaryList");
 		for (int i = 0; i < arrayTask.length(); i++) {
 			JSONObject jsn = arrayTask.getJSONObject(i);
@@ -67,6 +75,7 @@ public class TaskController {
 			}
 		}
 
+		task = new Task();
 		task.setTaskIdList(list);
 		model.addAttribute(task);
 		mav.addObject("task", task);

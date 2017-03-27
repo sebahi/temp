@@ -26,6 +26,7 @@ public class LoginController {
 	
 	@Autowired
 	Env environment;
+	
 	@Autowired
 	ObtainServerIPPort serverIPPort;
 	

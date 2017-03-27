@@ -3,21 +3,18 @@ package gov.loc.workflow.util;
 import java.util.Arrays;
 
 import org.apache.commons.codec.binary.Base64;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.util.MultiValueMap;
 
-import gov.loc.workflow.domain.User;
-
 @Component
+@Scope(value="prototype", proxyMode=ScopedProxyMode.TARGET_CLASS)
 public class ConnectionEstablishement {
 
-	@Autowired
-	User user;
-	
 	public HttpEntity<String> getConnectionRequest(String userName, String password) {
 		
 		String plainCreds = userName + ":" + password;

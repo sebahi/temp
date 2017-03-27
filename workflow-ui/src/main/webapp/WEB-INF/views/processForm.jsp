@@ -29,11 +29,11 @@ input[type="checkbox"] {
 			<h2>JBPM REPOSITORY</h2>
 			<p>Process Management</p>
 			<button type="button" class="btn btn-default btn-sm pull-right"
-				onclick="location.href='/workflow'">
+				onclick="location.href='/workflow-ui'">
 				<span class="glyphicon glyphicon-log-out"></span> Log out
 			</button>
 			<button type="button" class="btn btn-primary btn-sm pull-right"
-				onclick="location.href='/workflow/process/management/'">
+				onclick="location.href='/workflow-ui/process/management'">
 				<span class="glyphicon glyphicon-home"></span> Home
 			</button>
 		</div>
@@ -45,8 +45,11 @@ input[type="checkbox"] {
 			<div class="panel-body">
 				<div class="form-group">
 					<form:form class="form-vertical col-xs-8" method="GET"
-						action="/workflow/process/submit" modelAttribute="bag">
+						action="/workflow-ui/process/submit" modelAttribute="bag">
 
+						<input type="hidden" name="pdId" value="${processDefinition.id}">                         
+						<input type="hidden" name="pdDeploymentId" value="${processDefinition.deploymentId}">   
+	                      
 						<div>
 							<label class="col-sm-4 control-label">Bag Id</label>
 							<div class="form-group col-sm-6">
@@ -104,7 +107,7 @@ input[type="checkbox"] {
 				<div class="col-sm-10">
 					<br> <br> <input type="submit"
 						class="btn btn-primary pull-right" value="Submit"
-						onclick="location.href='http://'+${server}+'/workflow/process/management'" />
+						onclick="location.href='http://'+${server}+'/workflow-ui/process/management'" />
 				</div>
 
 

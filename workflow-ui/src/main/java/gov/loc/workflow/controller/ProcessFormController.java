@@ -10,11 +10,11 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
 import gov.loc.workflow.domain.Bag;
 import gov.loc.workflow.domain.Env;
-import gov.loc.workflow.domain.Process;
 import gov.loc.workflow.domain.User;
 import gov.loc.workflow.util.ConnectionEstablishement;
 
@@ -24,44 +24,34 @@ public class ProcessFormController {
 	private Logger logger = Logger.getLogger(ProcessFormController.class);
 	
     @Autowired
-    Bag bag;
-    @Autowired
-    Process process;
-    @Autowired
     Env environment;
+    
     @Autowired
     User user;
-	@Autowired
+	
+    @Autowired
 	ConnectionEstablishement connectionEstablishement;
-	@Autowired
+	
+    @Autowired
 	RestTemplate restTemplate;
     
-	private String bagId;
-	private boolean doInventory;
-	private boolean doMalwareScan;
-	private boolean doBagInPlace;
-	private boolean doExport;
-	private boolean doVerify;
-	private boolean doCopy;
-	private boolean doWriteBagInfo;
-	private boolean doDeleteFromStaging;
-	private String numberOfCopies;
-    
 	@RequestMapping(value = "/process/submit", method = RequestMethod.GET)
-	public String submitProcess(@ModelAttribute("processForm")Bag processForm,  Model model){
+	public String submitProcess(@ModelAttribute("processForm")Bag processForm,  
+								@RequestParam("pdId") String pdId, 
+								@RequestParam("pdDeploymentId") String pdDeploymentId, 
+								Model model){
 	
-		bagId = processForm.getBagId();
-		doInventory =  processForm.isDoInventory();
-		doMalwareScan = processForm.isDoMalwareScan();
-		doBagInPlace = processForm.isDoBagInPlace();
-		doExport = processForm.isDoExport();
-		doVerify =  processForm.isDoVerify();
-		doCopy =  processForm.isDoCopy();
-		doWriteBagInfo = processForm.isDoWriteBagInfo();
-		doDeleteFromStaging =  processForm.isDoDeleteFromStaging();
-		numberOfCopies = processForm.getNumberOfCopies();
-		
-		String url = "http://"+environment.getEnvironment()+"/jbpm-console/rest/runtime/"+ process.getDeploymentId() +"/withvars/process/"+ process.getProcessDefId() +"/start";
+		String bagId = processForm.getBagId();
+		boolean doInventory =  processForm.isDoInventory();
+		boolean doMalwareScan = processForm.isDoMalwareScan();
+		boolean doBagInPlace = processForm.isDoBagInPlace();
+		boolean doExport = processForm.isDoExport();
+		boolean doVerify =  processForm.isDoVerify();
+		boolean doCopy =  processForm.isDoCopy();
+		boolean doWriteBagInfo = processForm.isDoWriteBagInfo();
+		boolean doDeleteFromStaging =  processForm.isDoDeleteFromStaging();
+		String numberOfCopies = processForm.getNumberOfCopies();
+		String url = "http://"+environment.getEnvironment()+"/jbpm-console/rest/runtime/"+ pdDeploymentId +"/withvars/process/"+ pdId +"/start";
 		
 		logger.debug("Process submit url: "+url);
 		

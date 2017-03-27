@@ -1,27 +1,23 @@
 package gov.loc.workflow.domain;
 
-import java.util.HashMap;
-import java.util.Map;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
+//TODO: Remove the @Component annotation. 
 @Component
+@Scope(value="session", proxyMode=ScopedProxyMode.TARGET_CLASS)
 public class User {
-
-	Map<String, String> map = new HashMap<>();
-
-	private static String userName;
-	private static String password;
+	
+	private String userName;
+	private String password;
 
 	public User() {
 	}
 
-	public Map<String, String> getMap() {
-		return map;
-	}
-
 	public User(String userName, String password) {
-		User.userName = userName;
-		User.password = password;
+		this.userName = userName;
+		this.password = password;
 	}
 
 	public String getUserName() {
@@ -29,7 +25,7 @@ public class User {
 	}
 
 	public void setUserName(String userName) {
-		User.userName = userName;
+		this.userName = userName;
 	}
 
 	public String getPassword() {
@@ -37,11 +33,7 @@ public class User {
 	}
 
 	public void setPassword(String password) {
-		User.password = password;
-	}
-
-	public void setMap(Map<String, String> map) {
-		this.map = map;
+		this.password = password;
 	}
 
 }

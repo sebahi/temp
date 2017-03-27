@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+//TODO: Remove the @Component annotation. 
 @Component
 public class Task {
 
